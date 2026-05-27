@@ -1,0 +1,28 @@
+info:
+  name: create
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:3000/api/products
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Baso Super Ayam",
+        "slug": "baso-super-ayam",
+        "category_id": 1,
+        "description": "Bakso sapi super dengan isian telur",
+        "price": 35000,
+        "image_url": null,
+        "is_featured": true,
+        "is_active": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
