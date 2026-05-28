@@ -36,6 +36,39 @@ const ProductModel = {
     );
     return result.insertId;
   },
+  update: async (
+    name,
+    slug,
+    category_id,
+    description,
+    price,
+    image_url,
+    is_featured,
+    is_active,
+    id
+  ) => {
+    const [result] = await db.execute(
+      'UPDATE products set name=?, slug=?, category_id=?, description=?, price=?, image_url=?, is_featured=?, is_active=? WHERE id=?',
+      [
+        name,
+        slug,
+        category_id,
+        description,
+        price,
+        image_url,
+        is_featured,
+        is_active,
+        id,
+      ]
+    );
+    return result.affectedRows > 0;
+  },
+  delete: async (id) => {
+    const [result] = await db.execute('DELETE FROM products WHERE id = ? ', [
+      id,
+    ]);
+    return result.affectedRows > 0;
+  },
 };
 
 export default ProductModel;
