@@ -5,13 +5,12 @@ info:
 
 http:
   method: PUT
-  url: http://localhost:3000/api/products/1
+  url: http://localhost:3000/api/products/5
   body:
     type: json
     data: |-
       {
-        "name": "Baso duper",
-        "slug": "baso-duper",
+        "name": "Baso apaja bebas testing",
         "category_id": 1,
         "description": "Bakso sapi super dengan isian telur",
         "price": 35000,

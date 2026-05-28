@@ -1,11 +1,11 @@
 info:
-  name: getById
+  name: delete
   type: http
   seq: 1
 
 http:
-  method: GET
-  url: http://localhost:3000/api/products/5
+  method: DELETE
+  url: http://localhost:3000/api/categories/10
   auth: inherit
 
 settings:

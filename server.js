@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import db from './src/config/db.js';
 import productsRoutes from './src/routes/products.js';
+import cateriesRoutes from './src/routes/categories.js';
 
 dotenv.config();
 const app = express();
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use('/api/products', productsRoutes);
+app.use('/api/categories', cateriesRoutes);
 
 // app.get('/', async (req, res) => {
 //   try {

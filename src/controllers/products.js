@@ -6,7 +6,7 @@ export const getAllProducts = async (req, res) => {
     const products = await ProductModel.getAll();
     res.json({
       success: true,
-      message: 'data berhasil di ambil',
+      message: 'Product berhasil di ambil',
       data: products,
     });
   } catch (error) {
@@ -126,7 +126,6 @@ export const deleteProduct = async (req, res) => {
   try {
     const id = req.params.id;
     const product = await ProductModel.getById(id);
-
     if (!product) {
       return res.status(404).json({
         success: false,
@@ -135,7 +134,7 @@ export const deleteProduct = async (req, res) => {
       });
     }
 
-    const deleted = await ProductModel.delete(id);
+    await ProductModel.delete(id);
     res.json({
       success: true,
       message: 'Product berhasil di hapus',
