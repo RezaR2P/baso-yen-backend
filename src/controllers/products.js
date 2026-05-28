@@ -1,4 +1,5 @@
 import ProductModel from '../models/products.js';
+import slugify from 'slugify';
 
 export const getAllProducts = async (req, res) => {
   try {
@@ -46,16 +47,9 @@ export const getProductById = async (req, res) => {
 
 export const createProduct = async (req, res) => {
   try {
-    const {
-      name,
-      slug,
-      category_id,
-      description,
-      price,
-      is_featured,
-      is_active,
-    } = req.body;
-    console.log(req.body);
+    const { name, category_id, description, price, is_featured, is_active } =
+      req.body;
+    const slug = slugify(name, { lower: true, strict: true });
     const image_url = req.body.image_url || null;
     const product = await ProductModel.create(
       name,
@@ -70,7 +64,7 @@ export const createProduct = async (req, res) => {
     res.status(201).json({
       success: true,
       message: 'Produk berhasil ditambahkan',
-      data: product,
+      data: { id: product, slug, ...req.body },
     });
   } catch (error) {
     res.status(500).json({
@@ -86,7 +80,6 @@ export const updateProduct = async (req, res) => {
     const id = req.params.id;
     const {
       name,
-      slug,
       category_id,
       description,
       price,
@@ -95,7 +88,7 @@ export const updateProduct = async (req, res) => {
       image_url = null,
     } = req.body;
     const product = await ProductModel.getById(id);
-
+    const slug = slugify(name, { lower: true, strict: true });
     if (!product) {
       return res.status(404).json({
         success: false,
@@ -118,7 +111,7 @@ export const updateProduct = async (req, res) => {
     res.json({
       success: true,
       message: 'Product berhasil di update',
-      data: { id: Number(id, ...req.body) },
+      data: { id: Number(id), slug, ...req.body },
     });
   } catch (error) {
     res.status(500).json({
