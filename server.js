@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import db from './src/config/db.js';
 import productsRoutes from './src/routes/products.js';
 import cateriesRoutes from './src/routes/categories.js';
+import recipesRoutes from './src/routes/recipes.js';
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use('/api/products', productsRoutes);
 app.use('/api/categories', cateriesRoutes);
+app.use('/api/recipes', recipesRoutes);
 
 // app.get('/', async (req, res) => {
 //   try {

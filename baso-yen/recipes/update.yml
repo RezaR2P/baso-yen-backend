@@ -1,0 +1,24 @@
+info:
+  name: update
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: http://localhost:3000/api/recipes/4
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Baso Bakar Pedas Special banget",
+        "ingredients": ["10 butir baso", "3 sdm saus sambal", "1 sdm kecap manis", "1 sdt butter"],
+        "steps": ["Bakar baso hingga kecoklatan", "Oles dengan campuran saus dan butter", "Sajikan panas dengan irisan cabai"],
+        "is_published": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

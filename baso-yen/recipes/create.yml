@@ -1,0 +1,24 @@
+info:
+  name: create
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:3000/api/recipes
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Baso Bakar Pedas",
+        "ingredients": ["10 butir baso", "2 sdm saus sambal", "1 sdm kecap manis"],
+        "steps": ["Bakar baso hingga kecoklatan", "Oles dengan saus", "Sajikan panas"],
+        "is_published": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

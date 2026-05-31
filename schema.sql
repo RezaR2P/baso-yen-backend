@@ -8,6 +8,32 @@
 -- Dibuat untuk project MERN stack (MySQL)
 -- ============================================
 
+INSERT INTO recipes (title, slug, ingredients, steps, image_url, is_published) VALUES
+(
+  'Baso Kuah Spesial',
+  'baso-kuah-spesial',
+  '["500g daging sapi giling", "2 siung bawang putih", "1 sdt garam", "1 sdt merica"]',
+  '["Haluskan bawang putih", "Campur daging dengan bumbu", "Bentuk bulat-bulat", "Rebus hingga mengapung"]',
+  NULL,
+  true
+),
+(
+  'Mie Ayam Baso',
+  'mie-ayam-baso',
+  '["250g mie keriting", "100g daging ayam", "2 sdm kecap asin", "1 sdt minyak wijen"]',
+  '["Rebus mie hingga matang", "Tumis ayam dengan bumbu", "Campur mie dengan saus", "Sajikan dengan baso"]',
+  NULL,
+  true
+),
+(
+  'Baso Goreng Crispy',
+  'baso-goreng-crispy',
+  '["10 butir baso", "100g tepung panir", "2 butir telur", "minyak goreng secukupnya"]',
+  '["Celupkan baso ke telur", "Balur dengan tepung panir", "Goreng hingga keemasan", "Sajikan dengan saus sambal"]',
+  NULL,
+  true
+);
+
 
 INSERT INTO products (name, slug, category_id, description, price, is_featured, is_active) 
 VALUES ('Baso Polos', 'baso-polos', 1, 'Bakso sapi pilihan tanpa isian', 25000, true, true);
