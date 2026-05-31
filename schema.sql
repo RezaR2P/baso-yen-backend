@@ -154,3 +154,32 @@ INSERT INTO recipes (title, slug, ingredients, steps, image_url, is_published) V
 
 INSERT INTO products (name, slug, category_id, description, price, is_featured, is_active) 
 VALUES ('Baso Polos', 'baso-polos', 1, 'Bakso sapi pilihan tanpa isian', 25000, true, true);
+
+INSERT INTO contacts (name, business_name, phone, email, city, message, status) VALUES
+(
+  'Budi Santoso',
+  'Warung Makan Budi',
+  '081234567890',
+  'budi@gmail.com',
+  'Bandung',
+  'Halo, saya tertarik untuk menjadi reseller produk bakso anda. Bagaimana caranya?',
+  'new'
+),
+(
+  'Siti Rahayu',
+  'Cafe Siti',
+  '082345678901',
+  'siti@gmail.com',
+  'Jakarta',
+  'Apakah produk anda tersedia untuk wilayah Jakarta? Saya ingin order dalam jumlah besar.',
+  'read'
+),
+(
+  'Ahmad Fauzi',
+  NULL,
+  '083456789012',
+  'ahmad@gmail.com',
+  'Surabaya',
+  'Saya ingin request sampel produk mie keriting. Apakah bisa dikirim ke Surabaya?',
+  'replied'
+);

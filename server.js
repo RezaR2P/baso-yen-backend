@@ -5,6 +5,7 @@ import productsRoutes from './src/routes/products.js';
 import cateriesRoutes from './src/routes/categories.js';
 import recipesRoutes from './src/routes/recipes.js';
 import articlesRoutes from './src/routes/articles.js';
+import contactsRoutes from './src/routes/contacts.js';
 
 dotenv.config();
 const app = express();
@@ -16,6 +17,7 @@ app.use('/api/products', productsRoutes);
 app.use('/api/categories', cateriesRoutes);
 app.use('/api/recipes', recipesRoutes);
 app.use('/api/articles', articlesRoutes);
+app.use('/api/contacts', contactsRoutes);
 
 // app.get('/', async (req, res) => {
 //   try {
