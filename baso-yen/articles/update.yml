@@ -1,0 +1,23 @@
+info:
+  name: update
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: http://localhost:3000/api/articles/3
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Sejarah aja",
+        "content": "<h2>tahun 2000 di Bandung.</p>",
+        "is_published": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

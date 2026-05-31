@@ -8,37 +8,6 @@
 -- Dibuat untuk project MERN stack (MySQL)
 -- ============================================
 
-INSERT INTO recipes (title, slug, ingredients, steps, image_url, is_published) VALUES
-(
-  'Baso Kuah Spesial',
-  'baso-kuah-spesial',
-  '["500g daging sapi giling", "2 siung bawang putih", "1 sdt garam", "1 sdt merica"]',
-  '["Haluskan bawang putih", "Campur daging dengan bumbu", "Bentuk bulat-bulat", "Rebus hingga mengapung"]',
-  NULL,
-  true
-),
-(
-  'Mie Ayam Baso',
-  'mie-ayam-baso',
-  '["250g mie keriting", "100g daging ayam", "2 sdm kecap asin", "1 sdt minyak wijen"]',
-  '["Rebus mie hingga matang", "Tumis ayam dengan bumbu", "Campur mie dengan saus", "Sajikan dengan baso"]',
-  NULL,
-  true
-),
-(
-  'Baso Goreng Crispy',
-  'baso-goreng-crispy',
-  '["10 butir baso", "100g tepung panir", "2 butir telur", "minyak goreng secukupnya"]',
-  '["Celupkan baso ke telur", "Balur dengan tepung panir", "Goreng hingga keemasan", "Sajikan dengan saus sambal"]',
-  NULL,
-  true
-);
-
-
-INSERT INTO products (name, slug, category_id, description, price, is_featured, is_active) 
-VALUES ('Baso Polos', 'baso-polos', 1, 'Bakso sapi pilihan tanpa isian', 25000, true, true);
-
-
 CREATE DATABASE IF NOT EXISTS basoyen_db
 
 USE basoyen_db;
@@ -127,3 +96,61 @@ CREATE TABLE contacts (
   status        ENUM('new', 'read', 'replied') DEFAULT 'new',
   created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+
+INSERT INTO articles (title, slug, content, thumbnail_url, author_id, is_published) VALUES
+(
+  'Tips Memilih Bakso Berkualitas',
+  'tips-memilih-bakso-berkualitas',
+  '<h2>Tips Memilih Bakso Berkualitas</h2><p>Bakso yang berkualitas memiliki tekstur kenyal dan rasa yang gurih. Berikut tips memilihnya:</p><ul><li>Pilih bakso yang berwarna cerah</li><li>Tekstur kenyal saat ditekan</li><li>Tidak berbau amis</li></ul>',
+  NULL,
+  NULL,
+  true
+),
+(
+  'Cara Memasak Mie Yang Benar',
+  'cara-memasak-mie-yang-benar',
+  '<h2>Cara Memasak Mie Yang Benar</h2><p>Memasak mie yang benar akan menghasilkan tekstur yang sempurna. Ikuti langkah berikut:</p><ul><li>Rebus air hingga mendidih</li><li>Masukkan mie selama 3 menit</li><li>Tiriskan dan sajikan</li></ul>',
+  NULL,
+  NULL,
+  true
+),
+(
+  'Manfaat Protein Dari Daging Sapi',
+  'manfaat-protein-dari-daging-sapi',
+  '<h2>Manfaat Protein Dari Daging Sapi</h2><p>Daging sapi mengandung protein tinggi yang baik untuk tubuh. Berikut manfaatnya:</p><ul><li>Membangun otot</li><li>Menjaga daya tahan tubuh</li><li>Sumber energi</li></ul>',
+  NULL,
+  NULL,
+  true
+);
+
+INSERT INTO recipes (title, slug, ingredients, steps, image_url, is_published) VALUES
+(
+  'Baso Kuah Spesial',
+  'baso-kuah-spesial',
+  '["500g daging sapi giling", "2 siung bawang putih", "1 sdt garam", "1 sdt merica"]',
+  '["Haluskan bawang putih", "Campur daging dengan bumbu", "Bentuk bulat-bulat", "Rebus hingga mengapung"]',
+  NULL,
+  true
+),
+(
+  'Mie Ayam Baso',
+  'mie-ayam-baso',
+  '["250g mie keriting", "100g daging ayam", "2 sdm kecap asin", "1 sdt minyak wijen"]',
+  '["Rebus mie hingga matang", "Tumis ayam dengan bumbu", "Campur mie dengan saus", "Sajikan dengan baso"]',
+  NULL,
+  true
+),
+(
+  'Baso Goreng Crispy',
+  'baso-goreng-crispy',
+  '["10 butir baso", "100g tepung panir", "2 butir telur", "minyak goreng secukupnya"]',
+  '["Celupkan baso ke telur", "Balur dengan tepung panir", "Goreng hingga keemasan", "Sajikan dengan saus sambal"]',
+  NULL,
+  true
+);
+
+
+INSERT INTO products (name, slug, category_id, description, price, is_featured, is_active) 
+VALUES ('Baso Polos', 'baso-polos', 1, 'Bakso sapi pilihan tanpa isian', 25000, true, true);

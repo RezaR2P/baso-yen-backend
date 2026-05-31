@@ -1,0 +1,23 @@
+info:
+  name: create
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:3000/api/articles
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Sejarah Baso Yen Bandunsdfg",
+        "content": "<h2>Sejarah Baso Yen</h2><p>Baso Yen berdiri sejak tahun 2000 di Bandung.</p>",
+        "is_published": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
