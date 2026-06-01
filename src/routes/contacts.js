@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { authenticate } from '../middleware/auth.js';
 import {
   getAllContact,
   getByIdContact,
@@ -9,10 +10,10 @@ import {
 
 const router = Router();
 
-router.get('/', getAllContact);
-router.get('/:id', getByIdContact);
+router.get('/', authenticate, getAllContact);
+router.get('/:id', authenticate, getByIdContact);
 router.post('/', createContact);
-router.patch('/:id/status', updateStatusContact);
-router.delete('/:id', deleteContact);
+router.patch('/:id/status', authenticate, updateStatusContact);
+router.delete('/:id', authenticate, deleteContact);
 
 export default router;

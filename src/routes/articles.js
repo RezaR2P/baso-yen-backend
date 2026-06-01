@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { authenticate } from '../middleware/auth.js';
 import {
   getAllArticles,
   getByIdArticle,
@@ -11,8 +12,8 @@ const router = Router();
 
 router.get('/', getAllArticles);
 router.get('/:id', getByIdArticle);
-router.post('/', createArticle);
-router.put('/:id', updateArticle);
-router.delete('/:id', deleteArticle);
+router.post('/', authenticate, createArticle);
+router.put('/:id', authenticate, updateArticle);
+router.delete('/:id', authenticate, deleteArticle);
 
 export default router;

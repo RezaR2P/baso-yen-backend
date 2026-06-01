@@ -6,6 +6,7 @@ import cateriesRoutes from './src/routes/categories.js';
 import recipesRoutes from './src/routes/recipes.js';
 import articlesRoutes from './src/routes/articles.js';
 import contactsRoutes from './src/routes/contacts.js';
+import authRoutes from './src/routes/auth.js';
 
 dotenv.config();
 const app = express();
@@ -18,6 +19,7 @@ app.use('/api/categories', cateriesRoutes);
 app.use('/api/recipes', recipesRoutes);
 app.use('/api/articles', articlesRoutes);
 app.use('/api/contacts', contactsRoutes);
+app.use('/api/auth', authRoutes);
 
 // app.get('/', async (req, res) => {
 //   try {

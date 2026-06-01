@@ -5,8 +5,10 @@ info:
 
 http:
   method: DELETE
-  url: http://localhost:3000/api/products/6
-  auth: inherit
+  url: http://localhost:3000/api/products/8
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBiYXNveWVuLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc4MDMwMjYyMCwiZXhwIjoxNzgwMzg5MDIwfQ.NGTJ-hcXtNgJvOtnIbEgpKf6XKZ1JgvJc-6l8Fz6c84
 
 settings:
   encodeUrl: true

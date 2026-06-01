@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { authenticate } from '../middleware/auth.js';
 import {
   getAllRecipes,
   getByIdRecipe,
@@ -10,8 +11,8 @@ const router = Router();
 
 router.get('/', getAllRecipes);
 router.get('/:id', getByIdRecipe);
-router.post('/', createRecipe);
-router.put('/:id', updateRecipe);
-router.delete('/:id', deleteRecipe);
+router.post('/', authenticate, createRecipe);
+router.put('/:id', authenticate, updateRecipe);
+router.delete('/:id', authenticate, deleteRecipe);
 
 export default router;
