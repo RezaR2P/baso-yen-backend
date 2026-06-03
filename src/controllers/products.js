@@ -45,6 +45,24 @@ export const getProductById = async (req, res) => {
   }
 };
 
+export const getProductsByCategory = async (req, res) => {
+  try {
+    const { category_id } = req.params;
+    const products = await ProductModel.getByCategory(category_id);
+    res.json({
+      success: true,
+      message: 'Product Berhasil Di ambil',
+      data: products,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      data: null,
+    });
+  }
+};
+
 export const createProduct = async (req, res) => {
   try {
     const { name, category_id, description, price, is_featured, is_active } =
@@ -139,6 +157,31 @@ export const deleteProduct = async (req, res) => {
       success: true,
       message: 'Product berhasil di hapus',
       data: null,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      data: null,
+    });
+  }
+};
+
+export const getProductBySlug = async (req, res) => {
+  try {
+    const { slug } = req.params;
+    const products = await ProductModel.getBySlug(slug);
+    if (!products) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product tidak ditemukan',
+        data: null,
+      });
+    }
+    res.json({
+      success: true,
+      message: 'Product Berhasil Di ambil',
+      data: products,
     });
   } catch (error) {
     res.status(500).json({

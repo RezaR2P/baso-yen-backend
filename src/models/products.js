@@ -11,6 +11,20 @@ const ProductModel = {
     ]);
     return rows.length > 0 ? rows[0] : null;
   },
+  getByCategory: async (category_id) => {
+    const [rows] = await db.execute(
+      'SELECT * FROM products WHERE category_id = ? AND is_active = 1',
+      [category_id]
+    );
+    return rows;
+  },
+  getBySlug: async (slug) => {
+    const [rows] = await db.execute(
+      'SELECT * FROM products WHERE slug = ? AND is_active = 1',
+      [slug]
+    );
+    return rows.length > 0 ? rows[0] : null;
+  },
   create: async (
     name,
     slug,
