@@ -144,3 +144,28 @@ export const deleteRecipe = async (req, res) => {
     });
   }
 };
+
+export const getRecipesBySlug = async (req, res) => {
+  try {
+    const { slug } = req.params;
+    const recipe = await RecipesModel.getBySlug(slug);
+    if (!recipe) {
+      return res.status(404).json({
+        success: false,
+        message: 'Resep tidak ditemukan',
+        data: null,
+      });
+    }
+    res.json({
+      success: true,
+      message: 'Resep Berhasil Di ambil',
+      data: recipe,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      data: null,
+    });
+  }
+};

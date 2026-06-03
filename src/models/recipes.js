@@ -51,6 +51,12 @@ const RecipesModel = {
     const [result] = await db.execute('DELETE FROM recipes WHERE id = ?', [id]);
     return result.affectedRows > 0;
   },
+  getBySlug: async (slug) => {
+    const [rows] = await db.execute('SELECT * FROM recipes WHERE slug = ?', [
+      slug,
+    ]);
+    return rows.length > 0 ? rows[0] : null;
+  },
 };
 
 export default RecipesModel;

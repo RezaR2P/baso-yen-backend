@@ -6,10 +6,12 @@ import {
   createRecipe,
   updateRecipe,
   deleteRecipe,
+  getRecipesBySlug,
 } from '../controllers/recipes.js';
 const router = Router();
 
 router.get('/', getAllRecipes);
+router.get('/slug/:slug', getRecipesBySlug);
 router.get('/:id', getByIdRecipe);
 router.post('/', authenticate, createRecipe);
 router.put('/:id', authenticate, updateRecipe);
