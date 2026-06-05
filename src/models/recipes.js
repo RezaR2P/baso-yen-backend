@@ -55,7 +55,14 @@ const RecipesModel = {
     const [rows] = await db.execute('SELECT * FROM recipes WHERE slug = ?', [
       slug,
     ]);
-    return rows.length > 0 ? rows[0] : null;
+    if (rows.length === 0) return null;
+
+    return {
+      ...rows[0],
+      // di parse
+      ingredients: JSON.parse(rows[0].ingredients),
+      steps: JSON.parse(rows[0].steps),
+    };
   },
 };
 

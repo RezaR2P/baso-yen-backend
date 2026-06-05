@@ -135,3 +135,28 @@ export const deleteArticle = async (req, res) => {
     });
   }
 };
+
+export const getArticleBySlug = async (req, res) => {
+  try {
+    const { slug } = req.params;
+    const article = await ArticlesModel.getBySlug(slug);
+    if (!article) {
+      return res.status(404).json({
+        success: false,
+        message: 'Resep tidak ditemukan',
+        data: null,
+      });
+    }
+    res.json({
+      success: true,
+      message: 'Resep Berhasil Di ambil',
+      data: article,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      data: null,
+    });
+  }
+};

@@ -6,11 +6,13 @@ import {
   createArticle,
   updateArticle,
   deleteArticle,
+  getArticleBySlug,
 } from '../controllers/articles.js';
 
 const router = Router();
 
 router.get('/', getAllArticles);
+router.get('/slug/:slug', getArticleBySlug);
 router.get('/:id', getByIdArticle);
 router.post('/', authenticate, createArticle);
 router.put('/:id', authenticate, updateArticle);

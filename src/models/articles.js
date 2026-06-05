@@ -39,6 +39,12 @@ const ArticlesModel = {
     const [result] = await db.execute('DELETE FROM articles WHERE id=?', [id]);
     return result.affectedRows > 0;
   },
+  getBySlug: async (slug) => {
+    const [rows] = await db.execute('SELECT * FROM articles WHERE slug = ?', [
+      slug,
+    ]);
+    return rows.length > 0 ? rows[0] : null;
+  },
 };
 
 export default ArticlesModel;
