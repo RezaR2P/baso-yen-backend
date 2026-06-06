@@ -191,3 +191,20 @@ export const getProductBySlug = async (req, res) => {
     });
   }
 };
+
+export const getAllProductsAdmin = async (req, res) => {
+  try {
+    const products = await ProductModel.getAllAdmin();
+    res.json({
+      success: true,
+      message: 'Data berhasil diambil',
+      data: products,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      data: null,
+    });
+  }
+};

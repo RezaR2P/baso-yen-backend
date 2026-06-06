@@ -15,7 +15,9 @@ http:
         "steps": ["Bakar baso hingga kecoklatan", "Oles dengan saus", "Sajikan panas"],
         "is_published": true
       }
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBiYXNveWVuLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc4MDc1NDM1NiwiZXhwIjoxNzgwODQwNzU2fQ.s8WVhKEJOqndkCjcLmoRaAXUdyFZSATxorO6bCyKRy4
 
 settings:
   encodeUrl: true

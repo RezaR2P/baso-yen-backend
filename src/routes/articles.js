@@ -7,11 +7,13 @@ import {
   updateArticle,
   deleteArticle,
   getArticleBySlug,
+  getAllArticlesAdmin,
 } from '../controllers/articles.js';
 
 const router = Router();
 
 router.get('/', getAllArticles);
+router.get('/admin/all', authenticate, getAllArticlesAdmin);
 router.get('/slug/:slug', getArticleBySlug);
 router.get('/:id', getByIdArticle);
 router.post('/', authenticate, createArticle);

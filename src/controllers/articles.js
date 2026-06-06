@@ -160,3 +160,20 @@ export const getArticleBySlug = async (req, res) => {
     });
   }
 };
+
+export const getAllArticlesAdmin = async (req, res) => {
+  try {
+    const articles = await ArticlesModel.getAllAdmin();
+    res.json({
+      success: true,
+      message: 'Articles berhasil diambil',
+      data: articles,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      data: null,
+    });
+  }
+};

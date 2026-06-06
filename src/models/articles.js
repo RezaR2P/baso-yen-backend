@@ -2,6 +2,12 @@ import db from '../config/db.js';
 
 const ArticlesModel = {
   getAll: async () => {
+    const [rows] = await db.execute(
+      'SELECT * FROM articles WHERE is_published = 1'
+    );
+    return rows;
+  },
+  getAllAdmin: async () => {
     const [rows] = await db.execute('SELECT * FROM articles');
     return rows;
   },

@@ -169,3 +169,20 @@ export const getRecipesBySlug = async (req, res) => {
     });
   }
 };
+
+export const getAllRecipesAdmin = async (req, res) => {
+  try {
+    const recipes = await RecipesModel.getAllAdmin();
+    res.json({
+      success: true,
+      message: 'Resep berhasil diambil',
+      data: recipes,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      data: null,
+    });
+  }
+};

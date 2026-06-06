@@ -7,10 +7,12 @@ import {
   updateRecipe,
   deleteRecipe,
   getRecipesBySlug,
+  getAllRecipesAdmin,
 } from '../controllers/recipes.js';
 const router = Router();
 
 router.get('/', getAllRecipes);
+router.get('/admin/all', authenticate, getAllRecipesAdmin);
 router.get('/slug/:slug', getRecipesBySlug);
 router.get('/:id', getByIdRecipe);
 router.post('/', authenticate, createRecipe);

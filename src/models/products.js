@@ -2,6 +2,12 @@ import db from '../config/db.js';
 
 const ProductModel = {
   getAll: async () => {
+    const [rows] = await db.execute(
+      'SELECT * FROM products WHERE is_active = 1'
+    );
+    return rows;
+  },
+  getAllAdmin: async () => {
     const [rows] = await db.execute('SELECT * FROM products');
     return rows;
   },

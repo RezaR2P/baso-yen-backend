@@ -2,13 +2,23 @@ import db from '../config/db.js';
 
 const RecipesModel = {
   getAll: async () => {
-    const [rows] = await db.execute('SELECT * FROM recipes');
+    const [rows] = await db.execute(
+      'SELECT * FROM recipes WHERE is_published = 1'
+    );
     const parsed = rows.map((row) => ({
       ...row,
       ingredients: JSON.parse(row.ingredients),
       steps: JSON.parse(row.steps),
     }));
     return parsed;
+  },
+  getAllAdmin: async () => {
+    const [rows] = await db.execute('SELECT * FROM recipes');
+    return rows.map((row) => ({
+      ...row,
+      ingredients: JSON.parse(row.ingredients),
+      steps: JSON.parse(row.steps),
+    }));
   },
   getById: async (id) => {
     const [rows] = await db.execute('SELECT * FROM recipes WHERE id = ?', [id]);
