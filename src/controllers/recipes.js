@@ -45,14 +45,13 @@ export const getByIdRecipe = async (req, res) => {
 
 export const createRecipe = async (req, res) => {
   try {
-    const {
-      title,
-      ingredients,
-      steps,
-      image_url = null,
-      is_published,
-    } = req.body;
+    const { title, is_published } = req.body;
+    const ingredients = JSON.parse(req.body.ingredients);
+    const steps = JSON.parse(req.body.steps);
     const slug = slugify(title, { lower: true, strict: true });
+    const image_url = req.file
+      ? `/uploads/${req.file.filename}`
+      : req.body.image_url || null;
     const create = await RecipesModel.create(
       title,
       slug,
@@ -78,17 +77,14 @@ export const createRecipe = async (req, res) => {
 export const updateRecipe = async (req, res) => {
   try {
     const id = req.params.id;
-    const {
-      title,
-      ingredients,
-      steps,
-      image_url = null,
-      is_published,
-    } = req.body;
+    const { title, is_published } = req.body;
+    const ingredients = JSON.parse(req.body.ingredients);
+    const steps = JSON.parse(req.body.steps);
     const slug = slugify(title, { lower: true, strict: true });
-
+    const image_url = req.file
+      ? `/uploads/${req.file.filename}`
+      : req.body.image_url || null;
     const recipe = await RecipesModel.getById(id);
-
     if (!recipe) {
       return res.status(404).json({
         success: false,

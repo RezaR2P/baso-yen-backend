@@ -8,10 +8,14 @@ import recipesRoutes from './src/routes/recipes.js';
 import articlesRoutes from './src/routes/articles.js';
 import contactsRoutes from './src/routes/contacts.js';
 import authRoutes from './src/routes/auth.js';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 app.use(
   cors({
@@ -23,6 +27,7 @@ app.use(
 
 app.use(express.json());
 
+app.use('/uploads', express.static(join(__dirname, 'src/uploads')));
 app.use('/api/products', productsRoutes);
 app.use('/api/categories', cateriesRoutes);
 app.use('/api/recipes', recipesRoutes);

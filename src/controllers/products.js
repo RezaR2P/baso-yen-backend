@@ -68,7 +68,7 @@ export const createProduct = async (req, res) => {
     const { name, category_id, description, price, is_featured, is_active } =
       req.body;
     const slug = slugify(name, { lower: true, strict: true });
-    const image_url = req.body.image_url || null;
+    const image_url = req.file ? `/uploads/${req.file.filename}` : null;
     const product = await ProductModel.create(
       name,
       slug,
@@ -96,17 +96,13 @@ export const createProduct = async (req, res) => {
 export const updateProduct = async (req, res) => {
   try {
     const id = req.params.id;
-    const {
-      name,
-      category_id,
-      description,
-      price,
-      is_featured,
-      is_active,
-      image_url = null,
-    } = req.body;
+    const { name, category_id, description, price, is_featured, is_active } =
+      req.body;
     const product = await ProductModel.getById(id);
     const slug = slugify(name, { lower: true, strict: true });
+    const image_url = req.file
+      ? `/uploads/${req.file.filename}`
+      : req.body.image_url || null;
     if (!product) {
       return res.status(404).json({
         success: false,

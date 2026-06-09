@@ -7,18 +7,33 @@ http:
   method: POST
   url: http://localhost:3000/api/products
   body:
-    type: json
-    data: |-
-      {
-        "name": "Baso Super Ayam",
-        "category_id": 1,
-        "description": "Bakso sapi super dengan isian telur",
-        "price": 35000,
-        "image_url": null,
-        "is_featured": true,
-        "is_active": true
-      }
-  auth: inherit
+    type: multipart-form
+    data:
+      - name: name
+        type: text
+        value: Baso Test Foto
+      - name: category_id
+        type: text
+        value: '1'
+      - name: description
+        type: text
+        value: Test upload foto
+      - name: price
+        type: text
+        value: '30000'
+      - name: is_featured
+        type: text
+        value: '1'
+      - name: is_active
+        type: text
+        value: '1'
+      - name: image
+        type: file
+        value:
+          - foto/SHARK OUTLINE.jpg.jpeg
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBiYXNveWVuLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc4MDg1MTU1NiwiZXhwIjoxNzgwOTM3OTU2fQ.9cjFSmwXo8Wftp5s-dbWdX1MqzOnkwpbkCpB5tzIJac
 
 settings:
   encodeUrl: true

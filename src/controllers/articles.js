@@ -45,14 +45,9 @@ export const getByIdArticle = async (req, res) => {
 
 export const createArticle = async (req, res) => {
   try {
-    const {
-      title,
-      content,
-      thumbnail_url = null,
-      author_id = null,
-      is_published,
-    } = req.body;
+    const { title, content, author_id = null, is_published } = req.body;
     const slug = slugify(title, { lower: true, strict: true });
+    const thumbnail_url = req.file ? `/uploads/${req.file.filename}` : null;
     const create = await ArticlesModel.create(
       title,
       slug,
@@ -61,12 +56,14 @@ export const createArticle = async (req, res) => {
       author_id,
       is_published
     );
+
     res.status(201).json({
       success: true,
       message: 'Artikel Berhasil di buat',
       data: { id: create, slug, ...req.body },
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       success: false,
       message: error.message,
@@ -78,7 +75,8 @@ export const createArticle = async (req, res) => {
 export const updateArticle = async (req, res) => {
   try {
     const id = req.params.id;
-    const { title, content, thumbnail_url = null, is_published } = req.body;
+    const { title, content, is_published } = req.body;
+    const thumbnail_url = req.file ? `/uploads/${req.file.filename}` : null;
     const slug = slugify(title, { lower: true, strict: true });
     const article = await ArticlesModel.getById(id);
     if (!article) {
