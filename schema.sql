@@ -1,14 +1,12 @@
 -- docker network create basoyen_network
 -- docker run -d --name basoyen_mysql --network basoyen_network -e MYSQL_ROOT_PASSWORD=1122334 -e MYSQL_DATABASE=basoyen_db -e MYSQL_USER=basoyen_user -e MYSQL_PASSWORD=basoyen_pass -p 3306:3306 mysql:8
 
-
-
 -- ============================================
 -- DATABASE: BASO YEN REDESIGN
 -- Dibuat untuk project MERN stack (MySQL)
 -- ============================================
 
-CREATE DATABASE IF NOT EXISTS basoyen_db
+CREATE DATABASE IF NOT EXISTS basoyen_db;
 
 USE basoyen_db;
 
