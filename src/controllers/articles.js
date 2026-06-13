@@ -76,8 +76,9 @@ export const updateArticle = async (req, res) => {
   try {
     const id = req.params.id;
     const { title, content, is_published } = req.body;
-    const thumbnail_url = req.file ? `/uploads/${req.file.filename}` : null;
     const slug = slugify(title, { lower: true, strict: true });
+
+    // Cek dulu artikel ada atau tidak
     const article = await ArticlesModel.getById(id);
     if (!article) {
       return res.status(404).json({
@@ -86,6 +87,12 @@ export const updateArticle = async (req, res) => {
         data: null,
       });
     }
+
+    // Baru ambil thumbnail — pakai lama kalau tidak ada file baru
+    const thumbnail_url = req.file
+      ? `/uploads/${req.file.filename}`
+      : article.thumbnail_url;
+
     await ArticlesModel.update(
       title,
       slug,
@@ -96,7 +103,7 @@ export const updateArticle = async (req, res) => {
     );
     res.json({
       success: true,
-      message: 'Artikel Berhasil di Update',
+      message: 'Artikel berhasil diupdate',
       data: { id: Number(id), slug, ...req.body },
     });
   } catch (error) {

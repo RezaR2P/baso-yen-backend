@@ -98,11 +98,8 @@ export const updateProduct = async (req, res) => {
     const id = req.params.id;
     const { name, category_id, description, price, is_featured, is_active } =
       req.body;
-    const product = await ProductModel.getById(id);
     const slug = slugify(name, { lower: true, strict: true });
-    const image_url = req.file
-      ? `/uploads/${req.file.filename}`
-      : req.body.image_url || null;
+    const product = await ProductModel.getById(id);
     if (!product) {
       return res.status(404).json({
         success: false,
@@ -110,6 +107,11 @@ export const updateProduct = async (req, res) => {
         data: null,
       });
     }
+
+    const image_url = req.file
+      ? `/uploads/${req.file.filename}`
+      : product.image_url;
+
     await ProductModel.update(
       name,
       slug,

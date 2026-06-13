@@ -81,9 +81,7 @@ export const updateRecipe = async (req, res) => {
     const ingredients = JSON.parse(req.body.ingredients);
     const steps = JSON.parse(req.body.steps);
     const slug = slugify(title, { lower: true, strict: true });
-    const image_url = req.file
-      ? `/uploads/${req.file.filename}`
-      : req.body.image_url || null;
+
     const recipe = await RecipesModel.getById(id);
     if (!recipe) {
       return res.status(404).json({
@@ -92,6 +90,11 @@ export const updateRecipe = async (req, res) => {
         data: null,
       });
     }
+
+    const image_url = req.file
+      ? `/uploads/${req.file.filename}`
+      : recipe.image_url;
+
     await RecipesModel.update(
       title,
       slug,
@@ -128,7 +131,7 @@ export const deleteRecipe = async (req, res) => {
     }
     await RecipesModel.delete(id);
     res.json({
-      success: false,
+      success: true,
       message: 'Resep berhasil di hapus',
       data: null,
     });
